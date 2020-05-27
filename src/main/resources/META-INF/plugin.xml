@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>io.github.mishkun.purruity</id>
+    <name>Purrity</name>
+    <vendor email="mishkun.lev@gmail.com" url="https://github.com/Mishkun">Mishkun</vendor>
+
+    <description><![CDATA[
+    Plugin for analysing pure functions. Helps a lot with taming side effects in your codebase
+    ]]></description>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection language="kotlin"
+                          displayName="Data class should be immutable"
+                          shortName="ImmutableDataClass"
+                          groupName="Purity"
+                          enabledByDefault="true"
+                          level="WARNING"
+                          implementationClass="io.github.mishkun.purrity.CheckImmutableDataClassLocal"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
