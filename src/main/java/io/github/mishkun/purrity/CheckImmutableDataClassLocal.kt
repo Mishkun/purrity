@@ -18,6 +18,7 @@ class CheckImmutableDataClassLocal : LocalInspectionTool() {
             override fun visitClass(ktClass: KtClass) {
                 super.visitClass(ktClass)
                 if (!ktClass.isData()) return
+                if (ktClass.annotationEntries.any { it.text.toString() == "@Mutable" }) return
                 val constructor = ktClass.primaryConstructor ?: return
                 val context = constructor.analyze(BodyResolveMode.FULL)
                 for (parameter in constructor.valueParameters) {
@@ -32,7 +33,12 @@ class CheckImmutableDataClassLocal : LocalInspectionTool() {
                     val classDescriptor = DescriptorUtils.getClassDescriptorForType(typeDescriptor)
                     val fqName = classDescriptor.let { DescriptorUtils.getFqName(it) }
                     if (!(typeDescriptor.canBeUsedForConstVal() || classDescriptor.isData)) {
-                        holder.registerProblem(typeReference, "Data class parameter is not data class itself, but $fqName!")
+                        if (classDescriptor.annotations.all { "EffectivelyImmutable" !in it.fqName.toString()}) {
+                            holder.registerProblem(typeReference, "Data class parameter is not data class itself, but $fqName!")
+                        }
+                    }
+                    if (classDescriptor.annotations.any { "Mutable" in it.fqName.toString()}) {
+                        holder.registerProblem(typeReference, "Data class parameter ${parameter.name} is Mutable data class!")
                     }
                 }
             }
