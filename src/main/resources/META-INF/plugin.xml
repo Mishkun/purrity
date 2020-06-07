@@ -17,7 +17,7 @@
                           groupName="Purity"
                           enabledByDefault="true"
                           level="WARNING"
-                          implementationClass="io.github.mishkun.purrity.CheckImmutableDataClassLocal"/>
+                          implementationClass="io.github.mishkun.purrity.DataClassImmutabilityLocalTool"/>
 
         <localInspection language="kotlin"
                          displayName="Pure functions checks"
