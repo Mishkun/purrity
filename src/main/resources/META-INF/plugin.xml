@@ -25,7 +25,7 @@
                          groupName="Purity"
                          enabledByDefault="true"
                          level="WARNING"
-                         implementationClass="io.github.mishkun.purrity.CheckPureFunctionsLocal"/>
+                         implementationClass="io.github.mishkun.purrity.PureFunctionsLocalTool"/>
     </extensions>
 
     <actions>

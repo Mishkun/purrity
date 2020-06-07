@@ -15,7 +15,7 @@ import org.jetbrains.kotlin.resolve.BindingContext
 import org.jetbrains.kotlin.resolve.DescriptorUtils
 import org.jetbrains.kotlin.resolve.lazy.BodyResolveMode
 
-internal class CheckPureFunctionsLocal : LocalInspectionTool() {
+internal class PureFunctionsLocalTool : LocalInspectionTool() {
     override fun buildVisitor(holder: ProblemsHolder, isOnTheFly: Boolean): PsiElementVisitor {
         return object : KtTreeVisitorVoid() {
             override fun visitNamedFunction(function: KtNamedFunction) {
