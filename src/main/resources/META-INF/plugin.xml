@@ -18,6 +18,14 @@
                           enabledByDefault="true"
                           level="WARNING"
                           implementationClass="io.github.mishkun.purrity.CheckImmutableDataClassLocal"/>
+
+        <localInspection language="kotlin"
+                         displayName="Pure functions checks"
+                         shortName="PureFunctions"
+                         groupName="Purity"
+                         enabledByDefault="true"
+                         level="WARNING"
+                         implementationClass="io.github.mishkun.purrity.CheckPureFunctionsLocal"/>
     </extensions>
 
     <actions>
